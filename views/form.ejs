@@ -11,14 +11,28 @@
 
     <div class="containers">
         <h1>Blog</h1>
-       
         <div>
-            <form action="/post" class="control-form" method="post">
+            <% if (editPost){ %>
+                <form action="/post" class="control-form" method="post">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title" value="<%= editPost.title %>">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="9"><%= editPost.content %></textarea>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Name" value="<%= editPost.name %>">
+                    <button class="btn btn-primary" type="submit"><%= edit %></button>
+                </form>
+            <% }else{%>
+                <form action="/post" class="control-form" method="post">
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title">
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="9"></textarea>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Name">
                     <button class="btn btn-primary" type="submit">Post</button>
-            </form>
+                </form>
+            <% } %>
+            <!-- <form action="/post" class="control-form" method="post">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="9"></textarea>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Name">
+                    <button class="btn btn-primary" type="submit">Post</button>
+            </form> -->
         </div>
     </divs>
     

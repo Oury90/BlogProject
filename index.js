@@ -41,7 +41,11 @@ app.get("/post/:id", (req, res) =>{
     try {
         const id = parseInt(req.params.id);
         const editPost = all_post.find((post) => post.id === id);
-        res.json(editPost);
+        // res.json(editPost);
+        res.render("form.ejs", {
+            editPost: editPost,
+            edit: "Editing"
+        })
     } catch (error) {
         res.status(404).json({message: "The joke not exit"});
     }
