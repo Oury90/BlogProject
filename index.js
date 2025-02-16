@@ -50,6 +50,17 @@ app.get("/post/:id", (req, res) =>{
         res.status(404).json({message: "The joke not exit"});
     }
 })
+// post a editing post 
+app.post("/post/:id", (req, res) =>{
+    const id = parseInt(req.params.id);
+    const editPost = all_post.find((post) => post.id === id);
+
+    if(req.body.title) editPost.title = req.body.title
+    if(req.body.content) editPost.content = req.body.content
+    if(req.body.name) editPost.name = req.body.name
+
+    res.redirect("/")
+})
 
 app.listen(port, () =>{
     console.log(`This server is running on port ${port}`)
